@@ -28,7 +28,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#if !defined(ESP8266)
 #include <string.h>
 #include "os_port.h"
 #include "crypto.h"
@@ -325,4 +324,3 @@ void SHA256_Final(uint8_t *digest, SHA256_CTX *ctx)
     PUT_UINT32(ctx->state[6], digest, 24);
     PUT_UINT32(ctx->state[7], digest, 28);
 }
-#endif

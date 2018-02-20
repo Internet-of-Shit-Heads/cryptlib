@@ -2,13 +2,7 @@
 
 #include "cryptlib.h"
 
-#if defined(ESP8266)
-/* This should already be linked into the coordinator code. */
-extern void hmac_sha1(const uint8_t *msg, int length, const uint8_t *key,
-		int key_len, uint8_t *digest);
-#else
 #include "crypto.h"
-#endif
 
 static uint8_t digest_buf[SHA1_SIZE];
 

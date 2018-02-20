@@ -34,7 +34,6 @@
  * http://www.faqs.org/rfcs/rfc2202.html
  */
 
-#if !defined(ESP8266)
 #include <string.h>
 #include "os_port.h"
 #include "crypto.h"
@@ -49,6 +48,7 @@ void hmac_sha1(const uint8_t *msg, int length, const uint8_t *key,
     hmac_sha1_v(&msg, &length, 1, key, key_len, digest);
 }
 
+#if !defined(ESP8266)
 void hmac_sha1_v(const uint8_t **msg, int *length, int count, const uint8_t *key, 
         int key_len, uint8_t *digest)
 {
