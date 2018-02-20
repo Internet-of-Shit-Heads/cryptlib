@@ -3,16 +3,6 @@
 
 #define SHA1_SIZE   20
 
-#if defined(ESP8266)
-#ifndef PROGMEM
-#define PROGMEM __attribute__((aligned(4))) __attribute__((section(".irom.text")))
-#endif
-#else
-#ifndef PROGMEM
-#define PROGMEM
-#endif
-#endif
-
 /*
  *  This structure will hold context information for the SHA-1
  *  hashing operation
@@ -313,9 +303,9 @@ int cryptlib_verify(uint8_t *data, uint8_t size, const uint8_t *key)
 	uint8_t msg_size = size - CRYPTLIB_TAG_SIZE;
 
 	hmac_sha1(data, msg_size, key, CRYPTLIB_KEY_SIZE, digest_buf);
-	if (memcmp(data + msg_size, digest_buf, CRYPTLIB_TAG_SIZE) != 0){
+	if (memcmp(data + msg_size, digest_buf, CRYPTLIB_TAG_SIZE) != 0) {
 		return -1;
 	}
 
-	return 0;
+	return msg_size;
 }
