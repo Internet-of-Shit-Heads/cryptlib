@@ -109,10 +109,10 @@ static void SHA1ProcessMessageBlock(SHA1_CTX *ctx)
      */
     for  (t = 0; t < 16; t++)
     {
-        W[t] = ctx->Message_Block[t * 4] << 24;
-        W[t] |= ctx->Message_Block[t * 4 + 1] << 16;
-        W[t] |= ctx->Message_Block[t * 4 + 2] << 8;
-        W[t] |= ctx->Message_Block[t * 4 + 3];
+        W[t] = ((uint32_t)ctx->Message_Block[t * 4]) << 24;
+        W[t] |= ((uint32_t)ctx->Message_Block[t * 4 + 1]) << 16;
+        W[t] |= ((uint32_t)ctx->Message_Block[t * 4 + 2]) << 8;
+        W[t] |= ((uint32_t)ctx->Message_Block[t * 4 + 3]);
     }
 
     for (t = 16; t < 80; t++)
